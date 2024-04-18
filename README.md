@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### Initially you can start with ' npm install' 
+### Initially you can start with 'npm install' 
 
 This will install all the required dependecies and also installs all the node_modeule packages.
 
