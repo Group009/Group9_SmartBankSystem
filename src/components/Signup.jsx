@@ -25,74 +25,49 @@ function SignUp(props) {
 
 
     const regUser = () => {
-        console.log(props)
-
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    
         if (Firstname == undefined || Firstname == "") {
-            console.log(Firstname, email, password, confpassword)
-            // return 
             toast.error("Enter Full Name", {
                 position: "bottom-center",
-
-            })
-        }
-        else if (email == undefined || email == "") {
-            console.log(Firstname, email, password, confpassword)
-            // return 
+            });
+        } else if (email == undefined || email == "") {
             toast.error("Enter Email Address", {
                 position: "bottom-center",
-
-            })
-        }
-        else if (password == undefined || password == "") {
-            console.log(Firstname, email, password, confpassword)
-            // return 
+            });
+        } else if (password == undefined || password == "") {
             toast.error("Enter Password", {
                 position: "bottom-center",
-
-            })
-        }
-        else if (confpassword == undefined || confpassword == "") {
-            console.log(Firstname, email, password, confpassword)
-            // return 
+            });
+        } else if (confpassword == undefined || confpassword == "") {
             toast.error("Enter Confirm Password", {
                 position: "bottom-center",
-
-            })
-        }
-        else if (password.length < 8) {
-            // return 
+            });
+        } else if (password.length < 8) {
             toast.error("Password Must Be Greater Then 8 Letter", {
                 position: "bottom-center",
-                // theme: "dark",
-
-            })
-        }
-        else if (confpassword !== password) {
-            console.log(Firstname, email, password, confpassword)
-            // return 
+            });
+        } else if (confpassword !== password) {
             toast.error("Password Not Matched", {
                 position: "bottom-center",
-
-            })
-        }
-        else {
+            });
+        } else if (!passwordRegex.test(password)) {
+            toast.error("Password must contain at least one uppercase letter, one lowercase letter, and one digit, and be at least 8 characters long", {
+                position: "bottom-center",
+            });
+        } else {
             const isValid = /\S+@\S+\.\S+/.test(email);
-            console.log(isValid)
             if (isValid == false) {
                 toast.error("Email is Not Valid", {
                     position: "bottom-center",
-
-                })
-            }
-            else {
+                });
+            } else {
                 let res = isEmailRegistered(props, email)
                 if (res == true) {
                     toast.error("This Email Already Registered", {
                         position: "bottom-center",
-
-                    })
-                }
-                else {
+                    });
+                } else {
                     props.AddUsers({
                         email: email,
                         password: password,
@@ -103,18 +78,15 @@ function SignUp(props) {
                         UsersBenficiary :[],
                         status:true
                     })
-
+    
                     toast.success("User Registration Succefully", {
                         position: "bottom-center",
-
-                    })
-
-
+                    });
                 }
-
             }
         }
     }
+    
 
     const isEmailRegistered = (state, email) => {
         return state.user.some(user => user.email === email);
@@ -159,13 +131,28 @@ function SignUp(props) {
                             <TextField value={email || ""} onChange={(e) => setemail(e.target.value)} id="outlined-basic" label="Email" variant="outlined" className='form-control' />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-
-                            <TextField value={password || ""} onChange={(e) => setpassword(e.target.value)} id="outlined-basic" style={{ borderRadius: "40%" }} label="Password" variant="outlined" className='form-control' />
+                            <TextField
+                                value={password}
+                                onChange={(e) => setpassword(e.target.value)}
+                                id="outlined-basic"
+                                label="Password"
+                                variant="outlined"
+                                className='form-control'
+                                type="password"
+                            />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-
-                            <TextField value={confpassword || ""} onChange={(e) => setconfpassword(e.target.value)} id="outlined-basic" label="Confirm Password" variant="outlined" className='form-control' />
+                        <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+                            <TextField
+                                value={confpassword}
+                                onChange={(e) => setconfpassword(e.target.value)}
+                                id="outlined-basic"
+                                label="Confirm Password"
+                                variant="outlined"
+                                className='form-control'
+                                type="password"
+                            />
                         </Form.Group>
+
 
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Remember me" style={{ color: "#01065D" }} />
