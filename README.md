@@ -1,5 +1,13 @@
 # Getting Started with Smart Bank System
 
+### SmartBankSystem:
+
+The system which we are developing is a digital banking platform and it is exclusively designed for the students and staff, mainly focusing on accuracy, efficiency and a very enhanced user experience.
+
+### Architecture 
+
+![image](https://github.com/Group009/Group9_SmartBankSystem/assets/165433002/9b816e06-e338-493d-b9a4-26847b66128d)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
@@ -15,6 +23,9 @@ You can either Open [http://localhost:3000] or (http://localhost:3000) to view i
 
 Now we can see that The page reloads once you make changes in the code.\
 You may also see any warnings or lint errors in the console.
+
+![image](https://github.com/Group009/Group9_SmartBankSystem/assets/165433002/ecad538f-14dc-4a56-86f3-b9e18eca95e4)
+
 
 ### `npm test`
 
