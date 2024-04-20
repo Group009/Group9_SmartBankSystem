@@ -1,13 +1,7 @@
-const AddNewTransaction = (data)=>{
-    // console.log(data)
-    return(dispatch)=>{
-        dispatch({
-            type:'AddNewTrasaction',
-            data:data
-        })
-        // console.log(data)
+const AddNewTransaction = (data) => {
+    return (dispatch) => {
+        dispatch({ type: 'AddNewTrasaction', data: data })
     }
 }
-
 
 export default AddNewTransaction
